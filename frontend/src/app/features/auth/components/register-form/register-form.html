@@ -1,0 +1,20 @@
+<form [formGroup]="registerForm" (submit)="submitRegister()" class="register-form">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email">
+
+        <label for="username">Username</label>
+        <input id="username" type="text" formControlName="username">
+
+        <label for="name">Name</label>
+        <input id="name" type="text" formControlName="name">
+
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password">
+
+        <label for="confirm-password">Confirm Password</label>
+        <input id="confirm-password" type="password" formControlName="confirmPassword">
+    <div class="button-container">
+        <button class="goto-login-btn" (click)="gotoLoginForm()">Login</button>
+        <button type="submit" class="create-account-btn">Create Account</button>
+    </div>
+</form>

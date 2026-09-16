@@ -1,0 +1,10 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.button-container {
+    display: flex;
+    gap: 47px
+}

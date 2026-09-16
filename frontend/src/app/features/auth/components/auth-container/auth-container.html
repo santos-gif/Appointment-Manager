@@ -1,0 +1,17 @@
+<div class="auth-container-wrapper">
+    <div class="auth-title">
+        @if (isRegisterSection()) {
+            <h1>Register</h1>
+        } @else {
+            <h1>Login</h1>
+        }
+    </div>
+
+    <div class="auth-form">
+        @if (isRegisterSection()) {
+            <app-register-form [(isRegisterSection)]="isRegisterSection"></app-register-form>
+        }@else {
+            <app-login-form [(isRegisterSection)]="isRegisterSection"></app-login-form>
+        }
+    </div>
+</div>
