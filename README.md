@@ -1,19 +1,19 @@
 # AppointmentManager
 
-An app designed for appointments for Pradita University
+An app designed for managing appointments and meetings with people
 
 
 ## Overview
 
-I believe appointments are a major hurdle for students of Pradita University especially for freshmen who don't yet know the schedule of the professor they want to meet
-When asking for a specific Professor, rarely do they appear at their seats, and the students usually have to wait for an uncertain amount of time only for them to be busy
+I believe appointments are a major hurdle for a lot of people especially for people who don't know the schedule of the person
+they are trying to meet, using social media like Whatsapp or other forms of communication *Can* work but for people who rarely
+use them it is a struggle.
 
-This product was designed to prevent this, with this app students will have access to a teacher's schedule and will be able to see when they can appoint a meeting with them
-And with this app professors will also have the ability to appoint a meeting for a student for consultations such as project recommendations
+This product was designed to prevent this, with this app people will be able to appoint meetings with people they know the schedule of, alongside being able to meet with other people who are trying to connect to you with time and place set.
 
 ### Key Features
-1. The ability for students to meet with a professor without the uncertainty of where they are
-2. The ability for professors to appoint a meeting with a student for consultations
+1. The ability for people to meet with other people using defined time and place
+2. The ability for people to connect with you
 3. The ability for people to manage their schedule in a proper manner
 
 ---
