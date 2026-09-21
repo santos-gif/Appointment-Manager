@@ -1,0 +1,17 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install dependencies first (layer cache)
+COPY package*.json ./
+RUN npm ci
+
+# Source code is bind-mounted at runtime; this COPY is only
+# a fallback so the image can be built in isolation.
+COPY . .
+
+EXPOSE 4200
+
+# --host 0.0.0.0 makes ng serve reachable from outside the container
+# --poll is needed on some Docker/Windows setups where inotify doesn't fire
+CMD ["npx", "ng", "serve", "--host", "0.0.0.0", "--port", "4200", "--poll", "500"]

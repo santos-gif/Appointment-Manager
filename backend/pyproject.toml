@@ -1,0 +1,34 @@
+[project]
+name = "appointment-governance-engine"
+version = "1.0.0"
+description = "Hierarchical, Multi-Tenant Resource Governance and Scheduling Engine"
+authors = [{ name = "Enterprise Architecture Team" }]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi==0.136.1",
+    "uvicorn==0.46.0",
+    "asyncpg==0.31.0",
+    "sqlalchemy==2.0.49",
+    "alembic==1.19.2",
+    "pydantic>=2.9.0",
+    "pydantic-settings>=2.2.0",
+    "pyjwt>=2.8.0",
+    "passlib[bcrypt]>=1.7.4",
+    "bcrypt>=4.1.0",
+    "python-multipart>=0.0.9",
+    "aiosqlite>=0.20.0",
+    "greenlet>=3.0.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "httpx>=0.27.0",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["app/tests"]
+python_files = ["test_*.py"]

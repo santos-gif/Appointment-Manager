@@ -1,0 +1,54 @@
+# docker-compose.dev.yml
+#
+# Local development stack.
+# Extends the infrastructure services defined in docker-compose.yml and adds
+# hot-reloading containers for the backend (FastAPI/uvicorn) and the frontend
+# (Angular/ng serve).
+#
+# Usage:
+#   docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+#
+# Or set COMPOSE_FILE in your shell so plain `docker compose up` works:
+#   export COMPOSE_FILE=docker-compose.yml:docker-compose.dev.yml
+
+services:
+  # ─── Re-use the postgres + adminer services from docker-compose.yml ──────────
+  # Nothing to override for the infrastructure services; they are inherited as-is.
+
+  # ─── FastAPI backend ─────────────────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: appointment_engine_backend
+    # Bind-mount the source so uvicorn --reload picks up every file change.
+    volumes:
+      - ./backend:/app
+      # Prevent the host node_modules / .venv from shadowing the container's
+      # installed packages (anonymous volume trick).
+      - /app/__pycache__
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # ─── Angular frontend ─────────────────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: appointment_engine_frontend
+    volumes:
+      - ./frontend:/app
+      # Keep node_modules inside the container (don't shadow with host copy).
+      - /app/node_modules
+    ports:
+      - "4200:4200"
+    environment:
+      # Chokidar polling — helpful on Docker Desktop for Windows
+      CHOKIDAR_USEPOLLING: "true"
+    depends_on:
+      - backend
